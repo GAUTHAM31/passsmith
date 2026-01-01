@@ -1,0 +1,33 @@
+/* RulesCard styles */
+.rules-card {
+  width: 100%;
+}
+
+.rules-section {
+  margin-bottom: 16px;
+}
+
+.rules-section:last-child {
+  margin-bottom: 0;
+}
+
+.section-label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.rules-card .ant-radio-wrapper {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.rules-card .ant-checkbox-wrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.rules-card .ant-checkbox-wrapper .ant-checkbox {
+  margin-right: 8px;
+}
