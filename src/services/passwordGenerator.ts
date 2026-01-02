@@ -48,20 +48,24 @@ export async function expandSeedWithHKDF(
   const hkdfSalt = salt ?? new Uint8Array([]);
 
   // Import the seed as a raw crypto key usable for deriveBits (HKDF)
+  // Create a new Uint8Array to ensure proper ArrayBuffer type
+  const seedCopy = new Uint8Array(seed);
   const baseKey = await subtle.importKey(
     'raw',
-    seed.buffer,
+    seedCopy,
     { name: 'HKDF' },
     false,
     ['deriveBits']
   );
 
   // Prepare HKDF params
+  // Create new ArrayBuffer instances to ensure correct type
+  const infoBytes = enc.encode(info);
   const hkdfParams: HkdfParams = {
     name: 'HKDF',
     hash: 'SHA-256',
-    salt: hkdfSalt.buffer,
-    info: enc.encode(info).buffer
+    salt: new Uint8Array(hkdfSalt).buffer,
+    info: new Uint8Array(infoBytes).buffer
   };
 
   // deriveBits returns an ArrayBuffer of the requested bit length
@@ -90,19 +94,22 @@ async function deriveSeed(
   const salt = enc.encode(saltString);
 
   // Import master password as a key
+  // Create a new Uint8Array to ensure proper ArrayBuffer type
+  const masterPassBytes = enc.encode(masterPass);
   const keyMaterial = await subtle.importKey(
     'raw',
-    enc.encode(masterPass),
+    new Uint8Array(masterPassBytes),
     { name: 'PBKDF2' },
     false,
     ['deriveBits']
   );
 
   // Derive 32 bytes (256 bits) using PBKDF2
+  // Create new ArrayBuffer to ensure correct type
   const derivedBits = await subtle.deriveBits(
     {
       name: 'PBKDF2',
-      salt: salt.buffer,
+      salt: new Uint8Array(salt).buffer,
       iterations: 100000,
       hash: 'SHA-256'
     },
