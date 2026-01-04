@@ -24,7 +24,21 @@ export default function App() {
       <Content className="app-content">
         <MainPanel />
       </Content>
-      <Footer className="app-footer">PassSmith • Forge strong, recallable passwords</Footer>
+      <Footer className="app-footer">
+        <div>
+          PassSmith • Forge strong, recallable passwords
+        </div>
+        <div className="footer-support">
+          <a 
+            href="https://buymeacoffee.com/gajith" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="support-link"
+          >
+            ☕ Support my work
+          </a>
+        </div>
+      </Footer>
     </Layout>
   );
 }

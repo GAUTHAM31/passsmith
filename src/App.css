@@ -38,6 +38,26 @@
 .app-footer {
   text-align: center !important;
   width: 100%;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 8px !important;
+  align-items: center !important;
+}
+
+.footer-support {
+  margin-top: 4px;
+}
+
+.support-link {
+  color: #ff813f;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.support-link:hover {
+  color: #ff6b1a;
+  text-decoration: underline;
 }
 
 /* Mobile responsive styles */
