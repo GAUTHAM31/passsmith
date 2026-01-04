@@ -28,7 +28,6 @@ export default function InputsCard({
 
       <LabeledField 
         label="Master Password" 
-        required
         helperText="Never stored. Used only in your browser."
       >
         <Input.Password
@@ -40,8 +39,7 @@ export default function InputsCard({
 
       
       <LabeledField 
-        label="URL" 
-        required
+        label="Domain Name" 
         helperText="Used to make the password unique per website."
       >
         <Input
@@ -55,7 +53,6 @@ export default function InputsCard({
 
       <LabeledField 
         label="Profile" 
-        required
         helperText="Create different passwords for the same site (e.g. Work, Personal)."
       >
         <Select
